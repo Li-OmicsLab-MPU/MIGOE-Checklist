@@ -189,7 +189,7 @@ git push origin feature/principle-X-improvement
 
 - 📖 查看 [README.md](README.md) 了解项目概况
 - 💬 在 [Discussions](../../discussions) 提问
-- 📧 联系维护者: [project-email@example.com]
+- 📧 联系维护者: [kefengl@mpu.edu.mo]
 
 ---
 
