@@ -215,9 +215,9 @@ If you use the MIGOE framework in your research, please cite:
 ```bibtex
 @misc{migoe2026,
   title={MIGOE: Minimum Information for Generative Omics Evaluation},
-  author={[Author Team]},
+  author={[Li-OmicsLab-MPU Team]},
   year={2026},
-  howpublished={\url{https://github.com/[username]/MIGOE}},
+  howpublished={\url{https://github.com/Li-OmicsLab-MPU/MIGOE}},
   note={A framework for establishing trust boundaries in generative omics}
 }
 ```
@@ -241,7 +241,7 @@ Under the following terms:
 
 - **Issues**: [GitHub Issues](../../issues)
 - **Discussions**: [GitHub Discussions](../../discussions)
-- **Email**: [project-email@example.com]
+- **Email**: kefengl@mpu.edu.mo
 
 ---
 
