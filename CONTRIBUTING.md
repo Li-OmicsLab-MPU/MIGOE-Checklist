@@ -25,13 +25,14 @@
 如果您发现以下问题，请创建 Issue：
 - 内容错误或过时信息
 - 文献引用不准确
-- 章节逻辑不清晰
+- 原则描述不清晰
 - 技术术语使用不当
+- 实施清单不完整
 
 **Issue 模板**：
 ```markdown
-**问题类型**: [内容错误 / 文献更新 / 结构建议 / 其他]
-**涉及章节**: Chapter X - [章节名称]
+**问题类型**: [内容错误 / 文献更新 / 原则改进 / 其他]
+**涉及原则**: Principle X - [原则名称]
 **问题描述**: 
 **建议修改**: 
 **参考文献**: (如适用)
@@ -39,46 +40,45 @@
 
 ### 2. 补充文献 | Add References
 
-为章节添加相关文献引用：
+为框架原则添加相关文献引用：
 
 1. Fork 本仓库
-2. 在相应章节的 `references.md` 文件中添加文献
+2. 在 README.md 的相应原则部分添加文献引用
 3. 使用统一格式：
    ```markdown
    - **[作者姓名] et al. (年份)**. 文章标题. *期刊名*, 卷(期), 页码. DOI: [链接]
-     - **关键贡献**: 简要说明该文献对本章节的价值
+     - **关键贡献**: 简要说明该文献对该原则的价值
    ```
 4. 提交 Pull Request
 
-### 3. 修订章节内容 | Revise Chapter Content
+### 3. 修订框架内容 | Revise Framework Content
 
-对章节进行实质性修改时，请遵循以下流程：
+对框架原则进行实质性修改时，请遵循以下流程：
 
 #### Step 1: 开启讨论
 在 [Discussions](../../discussions) 或 Issue 中说明：
 - 修改动机（为什么需要这个改动？）
-- 修改范围（涉及哪些章节？）
+- 修改范围（涉及哪些原则？）
 - 预期影响（对框架整体的影响？）
 
 #### Step 2: Fork 与分支
 ```bash
 # Fork 仓库后克隆到本地
-git clone https://github.com/Li-OmicsLab-MPU/MIGOE-Checklist.git
+git clone https://github.com/your-username/MIGOE.git
 cd MIGOE
 
 # 创建特性分支
-git checkout -b feature/chapter-X-improvement
+git checkout -b feature/principle-X-improvement
 ```
 
 #### Step 3: 进行修改
 - 保持 Markdown 格式一致性
-- 每个章节应包含：
-  - **背景与动机**
-  - **核心概念定义**
-  - **评估方法/标准**
-  - **实施建议**
-  - **参考文献**
-- 新增内容必须附带文献支持
+- 修改 README.md 中的相应原则部分
+- 每个原则应包含：
+  - **Principle**: 原则说明
+  - **Key Requirements**: 关键要求
+  - **Implementation Checklist**: 实施清单
+- 新增内容必须附带文献支持或实践依据
 
 #### Step 4: 自我审查清单
 - [ ] 内容符合生成式组学的审计标准
@@ -87,42 +87,54 @@ git checkout -b feature/chapter-X-improvement
 - [ ] Markdown 格式正确（无断链、图片可访问）
 - [ ] 引用格式统一
 - [ ] 无拼写或语法错误
+- [ ] 实施清单完整且可操作
 
 #### Step 5: 提交 Pull Request
 ```bash
 git add .
-git commit -m "feat(chapter-X): 简要描述修改内容"
-git push origin feature/chapter-X-improvement
+git commit -m "feat(principle-X): 简要描述修改内容"
+git push origin feature/principle-X-improvement
 ```
 
 在 GitHub 上创建 PR，并填写：
 - **修改摘要**: 简要说明改动内容
 - **变更理由**: 为什么需要这个修改
-- **影响范围**: 涉及哪些章节
+- **影响范围**: 涉及哪些原则
 - **参考文献**: 支持修改的关键文献
 
 ### 4. 贡献案例研究 | Contribute Case Studies
 
-我们特别欢迎实际应用案例：
+我们特别欢迎实际应用案例，展示如何在真实研究中使用 MIGOE 框架：
 
 **案例要求**：
 - 真实的研究场景（可匿名化）
 - 明确的问题定义与解决方案
-- 使用 MIGOE 框架的具体方式
+- 使用 MIGOE 框架六个原则的具体方式
 - 结果与经验总结
+- 遵循 MIGOE 原则的证据
 
-**提交格式**：
-在 `chapters/chapter-8-case-studies.md` 中添加：
+**提交方式**：
+1. 在 `examples/` 目录下创建新的案例文件（如果目录不存在，请创建）
+2. 或在 README.md 末尾的 "Case Studies" 部分添加案例链接
+3. 使用以下格式：
+
 ```markdown
-### 案例 X: [案例标题]
+## Case Study: [案例标题]
 
-**研究背景**: 
-**应用场景**: 
-**MIGOE 应用**: 
-**关键发现**: 
-**经验教训**: 
-**参考文献**: 
+**Research Background**: 
+**Application Scenario**: 
+**MIGOE Principles Applied**: 
+- Principle 1: [如何应用]
+- Principle 2: [如何应用]
+- ...
+
+**Key Findings**: 
+**Lessons Learned**: 
+**References**: 
+**Code/Data Availability**: 
 ```
+
+**或者**通过 [Case Study Issue Template](../../issues/new?template=case-study.md) 提交案例
 
 ## Pull Request 审查流程 | PR Review Process
 
@@ -142,12 +154,42 @@ git push origin feature/chapter-X-improvement
 
 请阅读我们的 [行为准则](CODE_OF_CONDUCT.md)，确保社区的专业性和包容性。
 
+## 版本管理 | Versioning
 
-## 需要帮助？ | Need Help?
+- **主要版本** (v1.0, v2.0): 框架原则的重大调整或新增
+- **次要版本** (v1.1, v1.2): 原则内容的重要更新或扩展
+- **补丁版本** (v1.1.1): 文献更新、错误修正、清单完善
+
+## 贡献类型示例 | Contribution Examples
+
+### 改进实施清单
+如果您发现某个原则的实施清单不够完整或不够清晰，可以：
+1. 创建 Issue 说明问题
+2. 提出具体的改进建议
+3. 提供实践中的经验支持
+
+### 补充失效模式
+如果您在实践中发现了新的常见失效模式，可以：
+1. 在 MIGOE Checklist 表格中添加
+2. 提供具体的案例说明
+3. 建议相应的检查方法
+
+### 更新合规标准
+如果监管要求或领域最佳实践发生变化，可以：
+1. 提供最新的监管文件或文献
+2. 说明对 MIGOE 原则的影响
+3. 建议具体的更新内容
+
+所有贡献者将在以下位置获得认可：
+- `CONTRIBUTORS.md` 文件中列出
+- 重大贡献者可成为框架的共同作者
+- 年度贡献总结中特别致谢
+
+## 贡献者认可 | Contributor Recognition
 
 - 📖 查看 [README.md](README.md) 了解项目概况
 - 💬 在 [Discussions](../../discussions) 提问
-- 📧 联系维护者: [kefengl@mpu.edu.mo]
+- 📧 联系维护者: [project-email@example.com]
 
 ---
 
