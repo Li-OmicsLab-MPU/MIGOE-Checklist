@@ -222,7 +222,7 @@ If you use the MIGOE framework in your research, please cite:
   title={MIGOE: Minimum Information for Generative Omics Evaluation},
   author={[Li-OmicsLab-MPU Team]},
   year={2026},
-  howpublished={\url{https://github.com/Li-OmicsLab-MPU/MIGOE}},
+  howpublished={\url{https://github.com/Li-OmicsLab-MPU/MIGOE-Checklist}},
   note={A framework for establishing trust boundaries in generative omics}
 }
 ```
