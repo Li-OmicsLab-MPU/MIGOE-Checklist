@@ -47,17 +47,17 @@ When using or adapting MIGOE in your work, please provide attribution such as:
 **In publications:**
 ```
 This work utilizes the MIGOE (Minimum Information for Generative Omics Evaluation) 
-framework (https://github.com/[username]/MIGOE), licensed under CC BY 4.0.
+framework (https://github.com/Li-OmicsLab-MPU/MIGOE), licensed under CC BY 4.0.
 ```
 
 **In presentations:**
 ```
 Framework: MIGOE (CC BY 4.0)
-Source: github.com/[username]/MIGOE
+Source: github.com/Li-OmicsLab-MPU/MIGOE
 ```
 
 **In derivative works:**
 ```
 Adapted from MIGOE framework by [Original Authors], 
-licensed under CC BY 4.0 (https://github.com/[username]/MIGOE)
+licensed under CC BY 4.0 (https://github.com/Li-OmicsLab-MPU/MIGOE)
 ```
