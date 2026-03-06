@@ -63,7 +63,7 @@
 #### Step 2: Fork 与分支
 ```bash
 # Fork 仓库后克隆到本地
-git clone https://github.com/your-username/MIGOE.git
+git clone https://github.com/Li-OmicsLab-MPU/MIGOE-Checklist.git
 cd MIGOE
 
 # 创建特性分支
@@ -142,24 +142,12 @@ git push origin feature/chapter-X-improvement
 
 请阅读我们的 [行为准则](CODE_OF_CONDUCT.md)，确保社区的专业性和包容性。
 
-## 版本管理 | Versioning
-
-- **主要版本** (v1.0, v2.0): 框架结构重大调整
-- **次要版本** (v1.1, v1.2): 新增章节或重要内容
-- **补丁版本** (v1.1.1): 文献更新、错误修正
-
-## 贡献者认可 | Contributor Recognition
-
-所有贡献者将在以下位置获得认可：
-- `CONTRIBUTORS.md` 文件中列出
-- 重大贡献者可成为框架的共同作者
-- 年度贡献总结中特别致谢
 
 ## 需要帮助？ | Need Help?
 
 - 📖 查看 [README.md](README.md) 了解项目概况
 - 💬 在 [Discussions](../../discussions) 提问
-- 📧 联系维护者: [project-email@example.com]
+- 📧 联系维护者: [kefengl@mpu.edu.mo]
 
 ---
 
