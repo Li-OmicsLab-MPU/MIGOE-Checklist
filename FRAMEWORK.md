@@ -4,6 +4,9 @@
 
 The MIGOE (Minimum Information for Generative Omics Evaluation) framework establishes rigorous standards for evaluating generative AI models in omics research. It addresses critical challenges in establishing trust boundaries and audit standards for clinical artificial intelligence (ACI) deployment.
 
+![MIGOE Framework Overview](assets/migoe-framework-overview.png)
+*Figure 1: MIGOE Framework Overview. The framework evaluates generative omics models across six core dimensions, from data input through latent alignment to establishing trust boundaries for safe clinical deployment.*
+
 The framework strictly requires adherence to the following six core principles:
 
 ---
