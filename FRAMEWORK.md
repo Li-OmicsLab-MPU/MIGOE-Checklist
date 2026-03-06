@@ -182,7 +182,12 @@ Transparency is the cornerstone of building trust in AI-driven biology. Without 
 
 ---
 
-## Summary Table
+## MIGOE Checklist
+
+📥 **[Download MIGOE Checklist (Word Document)](assets/MIGOE-checklist.docx)**
+
+The following table summarizes the six core principles with evaluation objectives, minimum reporting requirements, and common failure modes. You can also download the checklist as a Word document for easy reference and self-assessment.
+
 
 | Core Dimension | Evaluation Objective | Minimum Reporting & Metrics | Common Failure Modes | Author Self-Check (Page/Sec) |
 |----------------|---------------------|----------------------------|---------------------|------------------------------|
