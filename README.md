@@ -5,26 +5,21 @@
 
 ## Overview
 
-The MIGOE (Minimum Information for Generative Omics Evaluation) framework establishes rigorous standards for evaluating generative AI models in omics research. It addresses critical challenges in establishing trust boundaries and audit standards for clinical artificial intelligence (ACI) deployment.
+The MIGOE (Minimum Information for Generative Omics Evaluation) framework establishes rigorous standards for evaluating generative AI models in omics research. It addresses critical challenges in establishing trust boundaries and audit standards for clinical artificial intelligence (ACI) deployment. 
+
+Generative omics is spearheading a paradigm leap from passive data alignment to active contextual inference. The MIGOE framework ensures that this escalation in capabilities is accompanied by rigorous auditing standards. Our goal is to shift the debate from "whether the generation is absolutely real" to "at what level of maturity a model can be held accountable for specific scientific claims," ensuring that virtual cohorts and Artificial Clinical Intelligence (ACI) serve as reliable accelerators rather than amplifiers of biases and algorithmic hallucinations.
 
 ![MIGOE Framework Overview](assets/migoe-framework-overview.png)
 
 ## Core Values
 
-- **Trust Boundary Definition**: Clearly define the capability scope and limitations of generative omics models
-- **Audit Standards**: Provide repeatable and verifiable evaluation methodologies
-- **Clinical Translation Support**: Ensure quality assurance for ACI system deployment
-- **Community-Driven Updates**: Continuously integrate latest research and best practices
-
-## Target Audience
-
-- Multi-omics data scientists and bioinformaticians
-- Generative AI model developers
-- Clinical metabolomics researchers
-- Medical AI regulators and auditors
-- Precision medicine and translational medicine practitioners
+- **Trust Boundary Definition**: Clearly define the capability scope and limitations of generative omics models.
+- **Audit Standards**: Provide repeatable and verifiable evaluation methodologies.
+- **Clinical Translation Support**: Ensure quality assurance for ACI system deployment.
+- **Community-Driven Updates**: Continuously integrate latest research and best practices.
 
 ---
+
 
 ## Six Core Principles
 
@@ -32,123 +27,108 @@ The framework strictly requires adherence to the following six core principles:
 
 ### 1. Tier Alignment & Generation Card
 
-**Principle**: Model evaluation must be strictly aligned with its claimed maturity tier to prevent using evidence from lower tiers to support higher-tier generalization claims.
+**Principle**: Model evaluation must align with the claimed maturity tier. Authors must disclose a transparent "Generation Card" to guard against academic misconduct such as artificially improving results.
 
 **Key Requirements:**
-- **Generation Card Disclosure**: Document all sampling iterations, random seed strategies, and post-processing filtering rules
-- **Tier Declaration**: Specify target tier with rationale
-- **Zero-shot Criteria**: Clarify data usage during pre-training, fine-tuning, or adaptation
+- **Tier Declaration**: Specify target tier (0–4) with a concise rationale based on task complexity and data modalities.
+- **Zero-shot Criteria**: Specify if target-cohort or target-modality paired data were used during pre-training, fine-tuning, or adaptation.
+- **Generation Card**: Disclose output type (point estimates vs. sampled distributions), sampling frequency, random seed strategy, and post-processing/QC rules.
 
 **Implementation Checklist:**
-- [ ] Document all random seeds used (not just the "best" one)
-- [ ] Report the number of generation attempts
-- [ ] Disclose any post-hoc filtering or selection criteria
-- [ ] Align evaluation metrics with the claimed maturity tier
-- [ ] Provide statistical distribution of results across multiple runs
+- [ ] Disclose output type (point estimates vs. sampled distributions).
+- [ ] Document all random seeds used and generation card details.
+- [ ] Audit generation card to prevent cherry-picking of favorable random seeds or filtered samples.
+- [ ] Clarify zero-shot criteria (data usage during pre-training, fine-tuning, or adaptation).
 
 ---
 
 ### 2. Data Provenance & Leakage Audit
 
-**Principle**: Authors must explicitly report the physical isolation among pre-training corpora, fine-tuning datasets, and independent test sets.
+**Principle**: Physical isolation among pre-training corpora, fine-tuning datasets, and independent test sets must be explicitly reported to ensure zero/few-shot capabilities are authentic and not artifacts of data contamination.
 
 **Key Requirements:**
-- **Strict Data Partitioning**: Partition at the patient/donor level (not cell level)
-- **Cohort Disclosure**: Detail origins, platforms, temporal coverage, and missingness mechanisms
-- **Overlap Audit**: Provide evidence of strict Train/Validation/Test isolation
+- **Strict Data Partitioning**: Mandate data splitting at the patient/donor level (not cell level); assign all longitudinal time points from one individual to a single split.
+- **Cohort Disclosure**: Detail origins, platforms, temporal coverage, missingness mechanisms, and provide a per-modality "missingness map".
+- **Overlap Audit**: Provide evidence of strict Train/Validation/Test physical isolation (e.g., Jaccard similarity of IDs, hash checks).
 
 **Implementation Checklist:**
-- [ ] Document complete data provenance (source, collection date, processing pipeline)
-- [ ] Verify patient/donor-level splitting for omics data
-- [ ] Audit for sample overlaps between train/validation/test sets
-- [ ] Check for shared biological covariates (e.g., batch effects, sequencing platform)
-- [ ] Identify and report any technical confounders
-- [ ] Provide data partition statistics (number of unique patients/donors per split)
+- [ ] Document cohort origins, platforms, temporal coverage, and provide a per-modality "missingness map".
+- [ ] Strictly partition data at the patient/donor level, ensuring all longitudinal time points from one individual are in a single split.
+- [ ] Audit for overlap using exact evidence (e.g., Jaccard similarity of IDs, hash checks).
+- [ ] Check for implicit bias (over-reliance on a single center or sequencing platform) and data leakage.
 
 ---
 
 ### 3. Baseline & Shortcut Audit
 
-**Principle**: Generative models must be benchmarked against robust non-generative baselines to conclusively demonstrate genuine learning of complex biological manifolds.
+**Principle**: Generative models must be benchmarked against robust non-generative baselines to conclusively demonstrate genuine learning of complex biological manifolds, rather than merely fitting superficial clinical confounders.
 
 **Key Requirements:**
-- **Mandatory Baseline Comparisons**: Compare against KNN, mean imputation, PCA, linear regression
-- **Shortcut Ablation**: Test confounder dependence by permuting technical covariates
-- **Distribution Matching**: Report global mixing metrics (Wasserstein distance, MMD, LISI)
+- **Baseline Comparison**: Compare end-to-end against non-generative baselines (specifically KNN, mean imputation, PCA); report performance delta (Δ).
+- **Shortcut Ablation**: Re-evaluate performance after splitting by center or permuting technical covariates (e.g., batch, platform labels) to test confounder dependence.
+- **Distribution Matching**: Report global mixing metrics (e.g., Wasserstein distance, MMD, LISI) as a sanity check.
 
 **Implementation Checklist:**
-- [ ] Implement at least 3 non-generative baseline methods
-- [ ] Report baseline performance using identical evaluation metrics
-- [ ] Conduct statistical significance tests (e.g., paired t-test, Wilcoxon)
-- [ ] Analyze where the generative model outperforms/underperforms baselines
-- [ ] Justify computational cost vs. performance gain
-- [ ] Test for shortcut learning (e.g., does the model rely on batch effects?)
+- [ ] Compare end-to-end against non-generative baselines (KNN, mean imputation, or PCA) and report performance delta (Δ).
+- [ ] Re-evaluate performance by permuting technical covariates to test confounder dependence (Shortcut ablation).
+- [ ] Report global mixing metrics (e.g., Wasserstein distance, MMD, LISI) as a sanity check.
+- [ ] Audit for shortcut learning, posterior collapse, or Occam's razor failure.
 
 ---
 
 ### 4. Uncertainty Quantification & Boundary Reporting
 
-**Principle**: The model must output confidence intervals or calibration metrics for generated features, explicitly delineating out-of-distribution (OOD) or low-confidence generation boundaries.
+**Principle**: The model must explicitly delineate out-of-distribution (OOD) or low-confidence generation boundaries. Quantifying epistemic and aleatoric uncertainty is as important as the point estimates themselves.
 
 **Key Requirements:**
-- **Uncertainty Metrics**: Confidence intervals, ECE, epistemic and aleatoric uncertainty
-- **Stratified Metrics**: Report performance by center, subpopulations, and feature frequency
-- **OOD Extrapolation**: Evaluate calibration drift on external cohorts
+- **Stratified Metrics**: Report performance stratified by center, key clinical/cell subpopulations, and feature frequency (e.g., common vs. rare features).
+- **Calibration**: Report Expected Calibration Error (ECE), predictive variance, or latent-space entropy across subgroups.
+- **OOD Extrapolation**: Evaluate performance and calibration drift (e.g., AUROC/ECE shift) on ≥ 1 external cohort.
 
 **Implementation Checklist:**
-- [ ] Provide confidence intervals or credible intervals for generated features
-- [ ] Report Expected Calibration Error (ECE)
-- [ ] Implement OOD detection mechanism
-- [ ] Distinguish epistemic vs. aleatoric uncertainty
-- [ ] Visualize uncertainty distributions
-- [ ] Define explicit boundaries where predictions should not be trusted
-- [ ] Validate calibration on held-out data
+- [ ] Report performance stratified by center, key clinical/cell subpopulations, and feature frequency.
+- [ ] Output confidence intervals or report Expected Calibration Error (ECE), predictive variance, or latent-space entropy across subgroups.
+- [ ] Delineate explicit out-of-distribution (OOD) or low-confidence generation boundaries.
+- [ ] Evaluate calibration drift (e.g., AUROC/ECE shift) on ≥ 1 external cohort.
 
 ---
 
 ### 5. Downstream Biological Validity
 
-**Principle**: Evaluation metrics must never be limited to mathematical reconstruction errors. They must encompass biological consistency and validity in downstream tasks.
+**Principle**: Evaluation metrics must never be limited to mathematical reconstruction errors (like MSE). They must encompass the concordance and biological self-consistency of the generated data in downstream tasks.
 
 **Key Requirements:**
-- **Beyond Reconstruction**: Evaluate differential expression, cell clustering, survival prediction
-- **DE Consistency**: Compare generated vs. real DE gene lists
-- **Topological Consistency**: Assess structure using ARI, NMI, manifold visualization
-- **Clinical Empirical Loop**: Validate on held-out paired measurements
+- **DE Consistency**: Compare generated vs. real differentially expressed (DE) gene lists using rank correlation or Jaccard index, with special attention to non-trivial DEGs and clinically relevant pathways.
+- **Topological Consistency**: Assess global structure and local neighborhoods using ARI, NMI, or manifold visualization (e.g., UMAP/Seurat).
+- **Clinical Empirical Loop**: Validate ≥ 1 downstream task on held-out paired empirical measurements (e.g., survival C-index).
 
 **Implementation Checklist:**
-- [ ] Report standard reconstruction metrics (MSE, Pearson r, etc.)
-- [ ] Evaluate on at least 2 downstream biological tasks
-- [ ] Test preservation of rare biological signals
-- [ ] Validate known biological relationships (e.g., gene-gene correlations)
-- [ ] Compare downstream task performance: real vs. generated data
-- [ ] Assess biological plausibility with domain experts
-- [ ] Check for preservation of data structure (e.g., manifold topology)
+- [ ] Validate downstream biological tasks beyond mathematical reconstruction errors (MSE, Pearson r).
+- [ ] Evaluate differential expression (DE) consistency using rank correlation or Jaccard index.
+- [ ] Assess topological consistency (e.g., using ARI, NMI, or UMAP/Seurat).
+- [ ] Validate at least one clinical empirical loop (e.g., survival C-index) on held-out paired data.
+- [ ] Check for signal dilution (over-smoothing of rare subpopulations) and ghost samples (biologically incoherent profiles).
 
 ---
 
 ### 6. Open Science & Living Guidelines
 
-**Principle**: Authors must provide complete source code, environmental containers, and minimally reproducible demos to ensure independent verification.
+**Principle**: Transparency in model weights, hyperparameters, and random seeds is the cornerstone of trust. Authors must provide complete environments and reproducible demos.
 
 **Key Requirements:**
-- **Code & Environment**: Release complete scripts with Docker/Conda specifications
-- **Minimal Reproducible Design**: Provide cloud-executable demo (< 10 min runtime)
-- **Weight Disclosure**: Provide pre-trained model weights
-- **Ethics & Privacy**: State IRB approvals and re-identification risk assessments
+- **Code & Environment**: Release complete preprocessing, training, and inference scripts with Docker/Conda specifications.
+- **Minimal Reproducible Design**: Provide a cloud-executable demo (e.g., Colab) and a lightweight toy dataset (≤ 10 min execution).
+- **Weight Disclosure**: Provide pre-trained model weights.
 
 **Implementation Checklist:**
-- [ ] Publish code on public repository (GitHub, GitLab, etc.)
-- [ ] Provide Docker/Singularity container or detailed environment specification
-- [ ] Release model weights (or provide access mechanism)
-- [ ] Document all hyperparameters in configuration files
-- [ ] Include random seeds in code and documentation
-- [ ] Create minimal working example (< 100MB data, < 10 min runtime)
-- [ ] Provide step-by-step reproduction instructions
-- [ ] Specify software versions and dependencies
-- [ ] Include unit tests or validation scripts
+- [ ] Release complete source code, preprocessing, training, and inference scripts.
+- [ ] Provide Docker/Singularity container or Conda environment specifications.
+- [ ] Provide a cloud-executable demo (e.g., Colab) and a lightweight toy dataset (≤ 10 min execution).
+- [ ] Release pre-trained model weights.
+- [ ] Document all hyperparameters and random seeds in configuration files.
 
 ---
+
 
 ## MIGOE Checklist
 
@@ -164,7 +144,7 @@ The following table summarizes the six core principles with evaluation objective
 | **3. Baseline & Shortcut Audit** | Prevent learning technical noise; justify generative architecture complexity. | • **Shortcut ablation**: Re-evaluate performance after splitting by center or permuting technical covariates (e.g., batch, platform labels) to test confounder dependence.<br>• **Baseline comparison**: Compare end-to-end against non-generative baselines (e.g., KNN, mean imputation, PCA); report performance delta (Δ).<br>• **Distribution matching**: Report global mixing metrics (e.g., Wasserstein distance, MMD, LISI) as a sanity check. | • **Shortcut learning**: The model predominantly memorizes batch effects or clinical covariates instead of underlying biological mechanisms.<br>• **Posterior collapse**: Ignoring latent variables, degenerating into a simplistic mean output.<br>• **Occam's razor failure**: Added complexity is unjustified as simple baselines perform comparably. |
 | **4. Uncertainty Quantification & Boundary Reporting** | Establish trust boundaries; prevent mean performance from masking long-tail failures.| • **Stratified metrics**: Report performance stratified by center, key clinical/cell subpopulations, and feature frequency (e.g., common vs. rare cell types/genes).<br>• **Calibration**: Report Expected Calibration Error (ECE), predictive variance, or latent-space entropy across subgroups.<br>• **OOD extrapolation**: Evaluate performance and calibration drift (e.g., AUROC/ECE shift) on ≥ 1 external cohort. | • **Overconfidence**: Assigning high confidence to completely unseen or anomalous samples.<br>• **Long-tail collapse**: Strong average metrics masking severe degradation on rare, clinically critical subpopulations. |
 | **5. Downstream Biological Validity** | Move from "looking similar" to "being biologically useful"; verify biological logical consistency and downstream task relevance. | • **DE consistency**: Compare generated vs. real differentially expressed (DE) gene lists using rank correlation or Jaccard index, with special attention to non‑trivial DEGs and clinically relevant pathways.<br>• **Topological consistency**: Assess global structure and local neighborhoods using ARI, NMI, or manifold visualization (e.g., UMAP/Seurat).<br>• **Clinical loop**: Validate ≥ 1 downstream task on held-out paired empirical measurements (e.g., survival C-index). | • **Signal dilution**: Over-smoothing to minimize global MSE, erasing distinctive signals of rare subpopulations.<br>• **Ghost samples**: Generating biologically incoherent profiles where mutually exclusive genes are highly co-expressed. |
-| **6. Open Science & Living Guidelines** | Ensure independent verification; build trust in AI-driven biology. | • **Code & environment**: Release complete preprocessing, training, and inference scripts with Docker/Conda specifications.<br>• **Minimal reproducible design**: Provide a cloud-executable demo (e.g., Colab) and a lightweight toy dataset (≤ 10 min execution).<br>• **Weight disclosure**: Provide pre-trained model weights.<br>• **Ethics**: State IRB approvals, data-use agreements, and re-identification risk assessments for generated data. | • **Environment dependency**: "Works on my machine"; fails elsewhere due to version conflicts.<br>• **Hyperparameter black box**: Undisclosed key coefficients or noise schedules preventing robust reproduction.<br>• **Privacy risk**: Unaddressed re-identification risks for generated patient data. |
+| **6. Open Science & Living Guidelines** | Ensure independent verification; build trust in AI-driven biology. | • **Code & environment**: Release complete preprocessing, training, and inference scripts with Docker/Conda specifications.<br>• **Minimal reproducible design**: Provide a cloud-executable demo (e.g., Colab) and a lightweight toy dataset (≤ 10 min execution).<br>• **Weight disclosure**: Provide pre-trained model weights.<br>• **Ethics**: State IRB approvals, data-use agreements, and re-identification risk assessments for generated data. | • **Environment dependency**: "Works on my machine"; fails elsewhere due to version conflicts.<br>• **Hyperparameter black box**: Undisclosed key coefficients or noise schedules preventing robust reproduction. |
 
 ---
 
