@@ -1,53 +1,50 @@
 # Contributing to MIGOE
 
-First off, thank you for considering contributing to the MIGOE (Minimum Information for Generative Omics Evaluation) framework! 
-
-This is a community-driven, living guideline. We welcome contributions from researchers, computational biologists, and clinical AI developers to help refine these standards.
+Thank you for your interest in contributing to the MIGOE (Minimum Information for Generative Omics Evaluation) framework. As a living guideline, MIGOE relies on ongoing community input. We welcome researchers, computational biologists, and clinical AI developers to help refine these standards.
 
 ## 1. Contribution Principles
 
-To maintain the rigorous academic standards required for clinical AI deployment, all contributions must adhere to the following principles:
-* **Academic Rigor**: All proposed changes, new metrics, or added failure modes must be grounded in peer-reviewed literature or extensively validated practical experience.
-* **Scope Consistency**: Contributions should focus on high-level methodology and evaluation principles, not tool-specific tutorials.
-* **Constructive Collaboration**: Be respectful and constructive in all Issues and Discussions.
+To maintain the necessary academic rigor for clinical AI deployment, please ensure your contributions align with the following principles:
+* **Academic Rigor**: All proposed changes, new metrics, or added failure modes must be supported by peer-reviewed literature or extensively validated practical experience.
+* **Scope Consistency**: Contributions should focus on high-level methodology and evaluation principles rather than tool-specific tutorials.
+* **Constructive Collaboration**: Maintain a professional and constructive tone in all Issues and Discussions.
 
 ## 2. How to Contribute
 
-You can contribute to the MIGOE framework in several ways:
-
 ### A. Reporting Issues or Typos
-If you spot an error, an outdated reference, or unclear wording, please [open an Issue](../../issues). 
-* Please use a clear title (e.g., *Typo in Principle 3* or *Clarification needed for ECE metric*).
-* Provide a brief description of the problem and your suggested fix.
+If you find an error, an outdated reference, or unclear wording, please [open an Issue](../../issues). 
+* Use a descriptive title (e.g., *Typo in Principle 3* or *Clarification needed for ECE metric*).
+* Provide a brief explanation of the problem and your suggested fix.
 
 ### B. Adding Literature & References
-The field of generative omics evolves rapidly. If you know of a recent, high-impact paper that supports or expands upon one of the six principles:
+Generative omics is evolving rapidly. To add a recent, high-impact paper that supports or expands upon one of the six principles:
 1. Fork this repository.
-2. Add the reference to the relevant section in `README.md` or the `MIGOE-checklist.docx`.
-3. Submit a Pull Request (PR) with a brief note on why this paper strengthens the framework.
+2. Add the reference to the relevant section in `README.md` or `MIGOE-checklist.docx`.
+3. Submit a Pull Request (PR) detailing why the paper strengthens the framework.
 
 ### C. Proposing Revisions to the Framework
-For substantial changes (e.g., adding a new metric, modifying a Checklist requirement, or proposing a new Failure Mode):
-1. **Discuss First**: Please [open a Discussion](../../discussions) or Issue to propose your change before rewriting the document. This saves everyone time.
-2. **Provide Evidence**: Any substantial change must be backed by a clear rationale and literature citations.
-3. **Submit a PR**: Once discussed, fork the repository, make your edits, and submit a PR.
+For substantial changes (e.g., adding metrics, modifying Checklist requirements, or introducing a new Failure Mode):
+1. **Discuss First**: [Open a Discussion](../../discussions) or Issue to propose the change before editing the document.
+2. **Provide Evidence**: Include a clear rationale and relevant literature citations.
+3. **Submit a PR**: Following the discussion, fork the repository, apply your edits, and submit a PR.
 
-### D. Contributing Case Studies (Highly Encouraged!)
-We strongly encourage researchers to share how they applied the MIGOE framework in their specific modality (e.g., single-cell RNA-seq, clinical metabolomics, spatial transcriptomics).
-* You can submit a short summary of your use case via an Issue, or add a markdown file in a `case-studies/` directory via a PR.
-* Please detail which principles were easy to apply, which required domain-specific adaptations, and what lessons were learned.
+### D. Contributing Case Studies
+We encourage researchers to share how they applied MIGOE in specific modalities (e.g., clinical metabolomics, single-cell RNA-seq, spatial transcriptomics).
+* Submit a short summary via an Issue, or add a markdown file in a `case-studies/` directory via a PR.
+* Highlight which principles were straightforward to apply, which required domain-specific adaptation, and key takeaways.
 
 ## 3. Pull Request (PR) Process
 
-1. **Fork** the repository and clone it to your local machine.
-2. **Create a branch** for your edits (`git checkout -b update-principle-4`).
+1. **Fork** the repository and clone it locally.
+2. **Create a branch** for your edits (e.g., `git checkout -b update-principle-4`).
 3. **Commit** your changes with clear, descriptive messages.
-4. **Push** to your fork and submit a **Pull Request** against our `main` branch.
-5. **Review**: The maintainers will review your PR. We may suggest edits for clarity or consistency before merging.
+4. **Push** to your fork and submit a **Pull Request** to the `main` branch.
+5. **Review**: Maintainers will review the PR and may request adjustments for clarity or consistency before merging.
 
 ## 4. Recognition
 
-All significant contributors will be publicly acknowledged in our future updates and releases. We deeply appreciate your time and expertise in making generative omics more trustworthy, controllable, and auditable.
+Significant contributors will be acknowledged in future updates and releases. We appreciate your efforts in helping make generative omics more trustworthy and auditable.
 
 ---
-*If you have any questions, feel free to reach out via [GitHub Discussions](../../discussions) or contact the maintainer directly at kefengl@mpu.edu.mo.*
+
+*For any questions, please use [GitHub Discussions](../../discussions) or contact the maintainer at kefengl@mpu.edu.mo.*
